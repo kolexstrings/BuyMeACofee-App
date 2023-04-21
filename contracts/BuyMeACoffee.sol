@@ -4,7 +4,7 @@ pragma solidity ^0.8.9;
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
 
-contract BuyMeACofee{
+contract BuyMeACoffee{
     //Event to emit when a memo is created
     event NewMemo (
         address indexed from,
