@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
-//Contract deployed via Sepoila Testnet to this contract address: 0x9e82428d48f3a5DBCAC584Aa3746d2d182A12d5d
+//Contract deployed via Sepoila Testnet to this contract address: 0x324af486420054f317eba3553f89c9723d53d304
 
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
@@ -27,7 +27,7 @@ contract BuyMeACoffee{
     address payable owner;
 
     //Makes a list of the Memos
-    Memo[] memo;
+    Memo[] memos;
 
     constructor() {
         owner = payable(msg.sender);
@@ -42,7 +42,7 @@ contract BuyMeACoffee{
         require(msg.value > 0, "Sorry you can't buy any body coffee with 0 eth");
 
         //Add to memo to storage
-        memo.push(Memo(
+        memos.push(Memo(
             msg.sender,
             block.timestamp,
             _name,
@@ -59,12 +59,12 @@ contract BuyMeACoffee{
     }
 
     function getMemos() public view returns (Memo[] memory) {
-       return memo;
+       return memos;
     }
 
     /*@dev this function, when called sends the balance of this tip which was stored
     in the contract address to the address of the owner i.e msg.sender */
-    function withdrawTip() public payable {
+    function withdrawTips() public payable {
         require(owner.send(address(this).balance));
     }
 }
